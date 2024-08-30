@@ -22,10 +22,12 @@ const App = () => {
     setSearch(e.target.value)
   }
 
-  const filteredCountries = countries && countries.filter((country) => {
+  const filteredCountries = countries.filter((country) => {
     return country.name.official.toLowerCase().includes(search.toLowerCase()) || 
     country.name.common.toLowerCase().includes(search.toLowerCase())
   })
+
+  console.log(search)
 
   return (
     <div>
@@ -36,15 +38,21 @@ const App = () => {
       <br />
       <br />
       <div id="countries-container">
-        {countries ? countries.map((country, index) => {
+        {search.length === 0 ? countries.map(country => {
           return <DisplayCountries 
           key = {country.cca3} 
           name = {country.name.common}
           flag = {country.flags.png}
           capital = {country.capital}
           />
-         }) : <p>Spinning the globe 🌍</p>}
-      
+         }) : filteredCountries.map(country => {
+          return <DisplayCountries 
+          key = {country.cca3} 
+          name = {country.name.common}
+          flag = {country.flags.png}
+          capital = {country.capital}
+          />
+         })}
       </div>
     </div>
   );
