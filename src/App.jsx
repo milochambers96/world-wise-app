@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
+import Navbar from "./Components/Navbar";
 import Atlas from "./Components/Atlas";
+import Visited from "./Components/Visited";
 import Quiz from "./Components/Quiz";
-
+import CountrySearch from "./Components/CountrySearch";
 const App = () => {
   const [countries, setCountries] = React.useState([]);
-  const [quiz, setQuiz] = React.useState(false);
+  const [isAtlasOpen, setIsAtlasOpen] = React.useState(false);
+  const [isVisitedOpen, setIsVisitedOpen] = React.useState(false);
+  const [hasQuizStarted, setHasQuizStarted] = React.useState(false);
 
   React.useEffect(() => {
     fetchCountries();
@@ -17,12 +22,20 @@ const App = () => {
     setCountries(countryData);
   }
 
+  if (!countries) {
+    return <h1>Please wait as we spin the globe</h1>;
+  }
+
   return (
-    <div className="content">
-      <h1>World Wise</h1>
-      <h3>A Passport to Global Knowledge.</h3>
-      {!quiz ? <Atlas quiz={quiz} countries={countries} /> : <Quiz />}
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<CountrySearch countries={countries} />} />
+        <Route path="/atlas" element={<Atlas />} />
+        <Route path="/visited" element={<Visited />} />
+        <Route path="/quiz" element={<Quiz />} />
+      </Routes>
+    </Router>
   );
 };
 

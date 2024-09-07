@@ -19,18 +19,6 @@ function Atlas({ countries, quiz }) {
   return (
     <>
       <section id="atlas-container">
-        {!quiz ? (
-          <input
-            id="search-bar"
-            type="search"
-            placeholder="Search by country or continent..."
-            name="search"
-            value={search}
-            onChange={handleSearch}
-          ></input>
-        ) : (
-          <p> </p>
-        )}
         (
         <div id="countries-container">
           {(search.length > 0 ? filteredCountries : countries).map(
