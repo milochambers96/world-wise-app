@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
+import SubregionRadio from "./SubregionRadio";
 
-function ContinentRadio({ setCountries, setHasRegionFilterBeenSelected }) {
+function GeographicRegionSelectFilter({
+  setCountries,
+  setHasRegionFilterBeenSelected,
+}) {
   const [geographicFilter, setGeographicFilter] = useState("");
-  const [regionSubFilter, setRegionSubFilter] = useState([]);
 
   function handleChange(e) {
     const selectedGeographicRegion = e.target.options[e.target.selectedIndex];
     const selectedText = selectedGeographicRegion.innerHTML;
-    console.log("the user selected", selectedText);
+    // console.log("the user selected", selectedText);
     setGeographicFilter(selectedText);
   }
 
@@ -51,9 +54,16 @@ function ContinentRadio({ setCountries, setHasRegionFilterBeenSelected }) {
             <option>Oceania</option>
           </select>
         </section>
+        <section>
+          <SubregionRadio
+            geographicFilter={geographicFilter}
+            setGeographicFilter={setGeographicFilter}
+            handleSelectChange={handleChange}
+          />
+        </section>
       </div>
     </>
   );
 }
 
-export default ContinentRadio;
+export default GeographicRegionSelectFilter;

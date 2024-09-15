@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DisplayCountries from "./AtlasUtilityFunctions/DisplayCountries";
-import ContinentRadio from "./AtlasUtilityFunctions/ContinentRadio";
+import GeographicRegionSelectFilter from "./AtlasUtilityFunctions/GeographicRegionSelectFilter";
 
 function Atlas() {
   const [countries, setCountries] = useState([]);
@@ -25,7 +25,7 @@ function Atlas() {
       <h3 className="is-size-4 has-text-centered has-text-black-ter has-text-weight-semibold mb-3">
         Your global atlas.
       </h3>
-      <ContinentRadio
+      <GeographicRegionSelectFilter
         setCountries={setCountries}
         setHasRegionFilterBeenSelected={setHasRegionFilterBeenSelected}
       />
