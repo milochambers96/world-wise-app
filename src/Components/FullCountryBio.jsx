@@ -16,9 +16,11 @@ function FullCountryBio({ country }) {
   return (
     <>
       <div className="is-flex is-justify-content-center">
-        <div className="country-bio has-background-warning-dark">
-          <h5>{country.name.official}</h5>
-          <div className="flag-container">
+        <div className="country-bio">
+          <h5 className="is-size-4 has-text-centered has-text-black-ter has-text-weight-semibold mb-2">
+            {country.name.official}
+          </h5>
+          <div className="flag-container mb-2">
             <img
               className="flag"
               src={country.flags.png}
@@ -43,9 +45,13 @@ function FullCountryBio({ country }) {
           <p>
             <strong>Official Language(s):</strong> {languages}
           </p>
-          <div className="coa-container">
+          <div className="coa-container mb-2">
             <img className="coat-of-arms" src={country.coatOfArms.png} />
           </div>
+          <p className="is-size-6 is-italic mt-2 mb-3">
+            {country.name.common}'s coat of arms
+          </p>
+          <button className="button">Add to visited</button>
         </div>
       </div>
     </>

@@ -23,7 +23,7 @@ function DisplayCountries({
 
   return (
     <div
-      className="country-card"
+      className="country-card-wrapper"
       onMouseOver={handleMouseEnter}
       onMouseOut={handleMouseOut}
     >
@@ -38,11 +38,12 @@ function DisplayCountries({
           lang={lang}
         />
       ) : (
-        <>
-          <h4>{name}</h4>
-          <div className="flag-container">
+        <div className="country-card">
+          <h4 className="is-size-5 has-text-centered has-text-black-ter has-text-weight-semibold mb-1">
+            {name}
+          </h4>
+          <div className="flag-container mb-1">
             <img className="flag" src={flag} alt={`Flag of ${name}`} />
-            fu
           </div>
           <p>
             <strong>Continent:</strong> {continent}
@@ -50,7 +51,7 @@ function DisplayCountries({
           <p>
             <strong>Capital:</strong> {capital}
           </p>
-        </>
+        </div>
       )}
     </div>
   );

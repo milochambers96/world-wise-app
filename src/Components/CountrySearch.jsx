@@ -11,6 +11,11 @@ function CountrySearch({ countries }) {
     console.log("the user input", userSearch);
   }
 
+  function submitUserSearch(e) {
+    e.preventDefault();
+    fetchSearchedCountry();
+  }
+
   async function fetchSearchedCountry() {
     try {
       const resp = await fetch(
@@ -18,34 +23,30 @@ function CountrySearch({ countries }) {
       );
       const searchedData = await resp.json();
       setSearchedCountry(searchedData);
+      console.log("The searched country is", searchedCountry);
     } catch (error) {
       console.error("Error fetching country data:", error);
     }
   }
 
-  function submitUserSearch(e) {
-    e.preventDefault();
-    fetchSearchedCountry();
-  }
-
   return (
     <>
-      <h1 className="is-size-1 has-text-centered has-text-black-ter">
+      <h1 className="is-size-1 has-text-centered has-text-black-ter has-text-weight-bold">
         World Wise
       </h1>
-      <h3 className="is-size-3 has-text-centered has-text-black-ter">
+      <h3 className="is-size-3 has-text-centered has-text-black-ter has-text-weight-semibold">
         A passport to global knowledge.
       </h3>
-      <p className="is-size-6 has-text-centered has-text-black-ter">
+      <p className="is-size-6 has-text-centered has-text-black-ter has-text-weight-semibold mb-3">
         Search for a country below, or head over to our{" "}
-        <strong>
+        <span className="has-text-weight-bold is-italic has-text-danger">
           <Link to="/atlas">Atlas</Link>
-        </strong>{" "}
+        </span>{" "}
         to discover a world of fascinating destinations.
       </p>
       <form
         onSubmit={submitUserSearch}
-        className="is-flex is-justify-content-center"
+        className="is-flex is-justify-content-center mb-3"
       >
         <div id="seach-bar" className="field has-addons">
           <div className="control">

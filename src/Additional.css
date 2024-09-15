@@ -35,20 +35,11 @@ background-image: url("/images/vintage-map.jpg");
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-#countries-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 10px;
-}
 
 
 
-.country-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
-} */
+
+
 
 .flag-container {
   width: 100%;
